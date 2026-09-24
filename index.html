@@ -7,52 +7,52 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#fdf8f0;color:#5a4430;font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+body{background:#fdf8f0;color:#5a4430;font-family:'Cormorant Garamond',serif;overflow-x:hidden;position:relative}
+
+/* ELEMENTOS DECORATIVOS DE CUMPLEAÑOS FLOTANTES */
+.decoracion-cumple{position:fixed;inset:0;pointer-events:none;z-index:99;overflow:hidden}
+.globo{position:absolute;font-size:28px;opacity:0.35;animation:flotar 8s ease-in-out infinite alternate}
+.globo1{top:10%;left:3%;animation-delay:0s}
+.globo2{top:45%;right:3%;animation-delay:2s}
+.globo3{top:75%;left:2%;animation-delay:4s}
+.confeti{position:absolute;font-size:20px;opacity:0.3;animation:flotar 6s ease-in-out infinite alternate}
+.confeti1{top:25%;right:4%;animation-delay:1s}
+.confeti2{top:60%;left:4%;animation-delay:3s}
+
+@keyframes flotar{
+  0%{transform:translateY(0) rotate(0deg)}
+  100%{transform:translateY(-20px) rotate(10deg)}
+}
 
 /* PORTADA */
 #portada{position:relative;min-height:100vh;min-height:100svh;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;overflow:hidden;background:#2d241d;padding:20px 20px 35px}
-
-/* Fondo difuminado de relleno */
 #portada::after{content:'';position:absolute;inset:0;background-image:url('foto7.jpeg');background-size:cover;background-position:center;filter:blur(25px) brightness(0.5);opacity:0.9}
-
-/* 
-  FOTO PRINCIPAL: 
-  - Anclada abajo (bottom)
-  - Zoom de 1.4 (scale) para empujar a la niña hacia arriba y fuera del marco 
-*/
 #portada::before{content:'';position:absolute;inset:0;z-index:1;background-image:url('foto7.jpeg');background-size:contain;background-position:center bottom;background-repeat:no-repeat;transform:scale(1.2);transform-origin:center bottom}
 
-/* 
-  TARJETA FLOTANTE MUY TRANSPARENTE 
-  - rgba al 0.25 para que sea casi cristalina
-  - backdrop-filter para difuminar levemente lo que hay detrás y que el texto se lea
-*/
 #portada .contenido{position:relative;z-index:2;max-width:420px;width:90%;margin-top:auto;display:flex;flex-direction:column;align-items:center;background:rgba(255, 255, 255, 0.25);padding:25px 20px;border-radius:22px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 10px 40px rgba(0,0,0,0.15);border:1px solid rgba(255, 255, 255, 0.4)}
-#portada .adorno{width:130px;margin-bottom:8px;opacity:0.9;color:#4a3525}
+#portada .adorno{width:140px;margin-bottom:8px;opacity:0.9;color:#4a3525}
 #portada h1{font-family:'EB Garamond',serif;font-size:clamp(30px, 5.5vw, 42px);font-weight:600;color:#2c1e14;line-height:1.15;letter-spacing:0.5px;text-shadow:0 0 15px rgba(255,255,255,0.8)}
 #portada h1 span{display:block;margin-top:4px;font-weight:400}
 #portada .btn{margin-top: 20px;background: rgba(255, 255, 255, 0.95);border: 1px solid rgba(0, 0, 0, 0.15);color: #1a1008;padding: 14px 32px;border-radius: 40px;font-size: 19px;font-family: 'Cormorant Garamond', serif;font-weight: 700;cursor: pointer;box-shadow: 0 4px 18px rgba(0,0,0,0.2);transition: all 0.2s ease;}
 #portada .btn:active{transform:scale(0.96)}
 
 /* CONTENIDO */
-#contenido{display:none;background:#fdf8f0}
+#contenido{display:none;background:#fdf8f0;position:relative;z-index:10}
 #galeria{padding:40px 0 20px}
 #galeria h2{text-align:center;font-family:'EB Garamond',serif;font-size:clamp(30px, 6vw, 42px);color:#4a3525;font-weight:400;margin-bottom:5px}
 #galeria .sub{text-align:center;font-size:13px;letter-spacing:2px;opacity:0.6;margin-bottom:20px}
 
-/* SLIDER Y FOTOS COMPLETAS */
+/* SLIDER Y FOTOS */
 .slider{width:100%;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
 .slider::-webkit-scrollbar{display:none}
 .slide{flex:0 0 100%;scroll-snap-align:center;padding:0 20px;display:flex;justify-content:center}
 .card{background:#fff;border-radius:24px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,0.05);max-width:450px;width:100%;border:1px solid #f3e9d9;display:flex;flex-direction:column;align-items:center}
-
 .card img{width:100%;height:55vh;max-height:500px;min-height:300px;object-fit:contain;background:#faf6f0;border-radius:16px;display:block}
-
 .card .texto{text-align:center;padding:18px 10px 10px;width:100%}
 .card .texto h3{font-family:'EB Garamond',serif;font-size:26px;color:#5e4228;font-weight:600;margin-bottom:6px}
 .card .texto p{font-size:18px;line-height:1.4;color: #1a1008;opacity:0.85}
 
-/* CONTROLES Y PUNTOS */
+/* CONTROLES */
 .dots{display:flex;justify-content:center;gap:8px;margin:20px 0 15px;flex-wrap:wrap;padding:0 20px}
 .dots span{width:8px;height:8px;border-radius:50%;background:#e0d4c3;transition:0.3s}
 .dots span.active{background:#8a6d52;width:24px;border-radius:10px}
@@ -60,20 +60,34 @@ body{background:#fdf8f0;color:#5a4430;font-family:'Cormorant Garamond',serif;ove
 .flechas button{background:#fff;border:1px solid #e8ddd0;width:45px;height:45px;border-radius:50%;cursor:pointer;font-size:22px;color:#8a6d52;box-shadow:0 4px 10px rgba(0,0,0,0.05);transition:0.2s}
 .flechas button:active{transform:scale(0.9)}
 
-/* CARTA RESPONSIVA */
-.carta{background:#fff;max-width:650px;width:calc(100% - 40px);margin:20px auto 50px;padding:45px 35px;border-radius:24px;box-shadow:0 12px 40px rgba(0,0,0,0.04);border:1px solid #f0e6d9;line-height:1.8}
-.carta h1{font-family:'EB Garamond',serif;font-size:40px;color:#4a3525;font-weight:400;margin-bottom:20px}
-.carta p{font-size:19px;margin-bottom:16px;color: #1a1008}
+/* SEPARADOR DECORATIVO (ESTILO FILIGRANA) */
+.separador{width:100%;max-width:240px;margin:20px auto;display:block;opacity:0.8;color:#5a4430}
+
+/* CARTA DECORADA */
+.carta{background:#fff;max-width:650px;width:calc(100% - 40px);margin:20px auto 50px;padding:45px 35px;border-radius:24px;box-shadow:0 12px 40px rgba(0,0,0,0.04);border:1px solid #f0e6d9;line-height:1.8;position:relative}
+.carta h1{font-family:'EB Garamond',serif;font-size:40px;color:#4a3525;font-weight:400;margin-bottom:15px;text-align:center}
+.carta p{font-size:19px;margin-bottom:16px;color: #1a1008;text-align:justify}
 
 /* SORPRESA FINAL */
 .sorpresa-btn-container{text-align:center;margin:20px 0 70px}
 .btn-sorpresa{background:#7a5a40;color:#fff;border:none;padding:16px 36px;border-radius:40px;font-size:20px;font-family:'Cormorant Garamond',serif;font-weight:600;cursor:pointer;box-shadow:0 8px 25px rgba(122,90,64,0.3);transition:0.3s}
 .btn-sorpresa:active{transform:scale(0.97)}
 
+/* SECCIÓN DE REVELACIÓN Y CARGA */
 #revelacion{display:none;padding:50px 20px;background:#f7efe5;border-top:1px solid #e8ddd0;text-align:center}
-#revelacion .regalo-card{max-width:550px;margin:0 auto;background:#fff;padding:30px;border-radius:24px;box-shadow:0 12px 35px rgba(0,0,0,0.06)}
+#loader-sorpresa{max-width:500px;margin:0 auto;padding:40px 20px}
+.spinner{width:50px;height:50px;border:4px solid #e0d4c3;border-top:4px solid #7a5a40;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+#loader-sorpresa h3{font-family:'EB Garamond',serif;font-size:30px;color:#4a3525;margin-bottom:10px}
+#loader-sorpresa p{font-size:18px;color:#6b523e;font-style:italic}
+
+#regalo-final{display:none;animation:fadeIn 1.2s ease-in-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+#revelacion .regalo-card{max-width:550px;margin:0 auto;background:#fff;padding:30px;border-radius:24px;box-shadow:0 12px 35px rgba(0,0,0,0.06);border:1px solid #f0e6d9}
 #revelacion h2{font-family:'EB Garamond',serif;font-size:38px;color:#4a3525;margin-bottom:15px}
-#revelacion p{font-size:19px;margin-bottom:25px;line-height:1.6}
+#revelacion p{font-size:19px;margin-bottom:25px;line-height:1.6;color:#1a1008}
 #revelacion img{width:100%;max-height:450px;object-fit:contain;border-radius:16px;background:#faf6f0}
 
 audio{display:none}
@@ -86,6 +100,15 @@ audio{display:none}
 </head>
 <body>
 
+<!-- DECORACIONES FLOTANTES -->
+<div class="decoracion-cumple">
+  <span class="globo globo1">🎈</span>
+  <span class="globo globo2">🎈</span>
+  <span class="globo globo3">🎁</span>
+  <span class="confeti confeti1">✨</span>
+  <span class="confeti confeti2">🥳</span>
+</div>
+
 <audio id="audio" loop preload="auto">
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
@@ -93,7 +116,7 @@ audio{display:none}
 <section id="portada">
   <div class="contenido">
     <div class="adorno">
-      <svg viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 H80 M120 10 H200" stroke="#4a3525" stroke-width="0.8"/><g stroke="#4a3525" stroke-width="0.8" fill="none"><path d="M100 2 Q103 5 100 8 Q97 11 100 14"/><path d="M102 4 Q108 3 112 6 Q106 7 102 4"/><path d="M98 12 Q92 13 88 10 Q94 9 98 12"/></g></svg>
+      <svg viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 H80 M120 10 H200" stroke="currentColor" stroke-width="0.8"/><g stroke="currentColor" stroke-width="0.8" fill="none"><path d="M100 2 Q103 5 100 8 Q97 11 100 14"/><path d="M102 4 Q108 3 112 6 Q106 7 102 4"/><path d="M98 12 Q92 13 88 10 Q94 9 98 12"/></g></svg>
     </div>
     <h1>Feliz Cumpleaños <span>Mi Amor</span></h1>
     <button class="btn" onclick="iniciar()">Comenzar el recorrido 💕</button>
@@ -102,8 +125,8 @@ audio{display:none}
 
 <div id="contenido">
   <section id="galeria">
-    <h2>Has sido luz en nuestras vidas</h2>
-    <p class="sub">...</p>
+    <h2>Has sido luz en nuestras vidas 🎂</h2>
+    <p class="sub">UN RECORRIDO POR TU HISTORIA</p>
     <div class="slider" id="slider">
       <div class="slide"><div class="card"><img src="foto1.jpeg"><div class="texto"><h3>El inicio de todo</h3><p>Así empezó la historia del gran hombre que eres.</p></div></div></div>
       <div class="slide"><div class="card"><img src="foto2.jpeg"><div class="texto"><h3>El niño más tierno</h3><p>Porque las fotos más reales son las que más nos hacen sonreír.</p></div></div></div>
@@ -112,11 +135,11 @@ audio{display:none}
       <div class="slide"><div class="card"><img src="foto5.jpeg"><div class="texto"><h3>Protección</h3><p>Bajos los hombros de quienes siempre te cuidaron.</p></div></div></div>
       <div class="slide"><div class="card"><img src="foto6.jpeg"><div class="texto"><h3>Con todo el estilo</h3><p>Guapo, tierno y con una mirada que lo dice todo.</p></div></div></div>
       <div class="slide"><div class="card"><img src="foto7.jpeg"><div class="texto"><h3>Ese carisma</h3><p>Con la misma mirada fija y decidida que te sigue caracterizando.</p></div></div></div>
-      <div class="slide"><div class="card"><img src="foto8.jpeg"><div class="texto"><h3>El novio más guapo</h3>Mírate nada más... ¡Quién hubiera podido conocerte desde esos años!<p></p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto8.jpeg"><div class="texto"><h3>El novio más guapo</h3><p>Mírate nada más... ¡Quién hubiera podido conocerte desde esos años!</p></div></div></div>
       <div class="slide"><div class="card"><img src="foto9.jpeg"><div class="texto"><h3>El comienzo de tus metas</h3><p>Con la sonrisa intacta y lleno de ilusiones.</p></div></div></div>
       <div class="slide"><div class="card"><img src="foto10.jpeg"><div class="texto"><h3>El reflejo de su amor</h3><p>Parte de todo lo bonito que hay en ti es gracias al amor con el que te formó.</p></div></div></div>
       <div class="slide"><div class="card"><img src="foto11.jpeg"><div class="texto"><h3>Orgullosa de tu proceso</h3><p>Admiro profundamente todo lo que has logrado.</p></div></div></div>
-      <div class="slide"><div class="card"><img src="foto12.jpeg"><div class="texto"><h3>El cariño de los tuyos</h3>Rodeado siempre del cariño, el apoyo y la alegría de quienes te aman.<p></p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto12.jpeg"><div class="texto"><h3>El cariño de los tuyos</h3><p>Rodeado siempre del cariño, el apoyo y la alegría de quienes te aman.</p></div></div></div>
       <div class="slide"><div class="card"><img src="foto13.jpeg"><div class="texto"><h3>Un amor infinito</h3><p>Tu rol de papá te queda hermoso; eres su guía, su héroe y su mayor luz.</p></div></div></div>
       <div class="slide"><div class="card"><img src="foto14.jpeg"><div class="texto"><h3>Mi orgullo</h3><p>Tus logros son los míos.</p></div></div></div>
       <div class="slide"><div class="card"><img src="foto15.jpeg"><div class="texto"><h3>El amor</h3><p>Nuestra historia.</p></div></div></div>
@@ -126,15 +149,20 @@ audio{display:none}
     <div class="flechas"><button onclick="mover(-1)">‹</button><button onclick="mover(1)">›</button></div>
   </section>
 
+  <!-- CARTA -->
   <div class="carta">
+    <svg class="separador" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 H80 M120 10 H200" stroke="currentColor" stroke-width="0.8"/><g stroke="currentColor" stroke-width="0.8" fill="none"><path d="M100 2 Q103 5 100 8 Q97 11 100 14"/><path d="M102 4 Q108 3 112 6 Q106 7 102 4"/><path d="M98 12 Q92 13 88 10 Q94 9 98 12"/></g></svg>
+    
     <h1>Mi Amor,</h1>
+    
     <p>Hoy, 30 de septiembre de 2026, celebramos tus 32 años de vida, y no imaginas la inmensa felicidad y gratitud que siente mi corazón al estar a tu lado en un día tan especial.</p>
-    <p>En cada una de las fotos que acabas de ver quise plasmar un poquito de tu historia: desde tus primeros pasos siendo ese bebito curioso y alegre, pasando por tus aventuras, tu juventud y tu crecimiento, hasta llegar al hombre maravilloso que eres hoy, 32 años después.
+    <p>En cada una de las fotos que acabas de ver quise plasmar un poquito de tu historia: desde tus primeros pasos siendo ese bebito curioso y alegre, pasando por tus aventuras, tu juventud y tu crecimiento, hasta llegar al hombre maravilloso que eres hoy, 32 años después.</p>
+    <p>Quiero que sepas que me siento infinitamente agradecida con la vida por tu existencia, por cruzar nuestros caminos y por darme el regalo de compartir mi vida contigo. Siento un orgullo gigante por todo lo que has construido y por cada logro en tu camino; tus triunfos los siento y los celebro como si fueran míos. Admiro profundamente tu liderazgo, esa paciencia tan bonita con la que me escuchas y me cuidas, y sobre todo tu determinación inquebrantable para no rendirte ante nada.</p>
+    <p>Sé que la vida a veces nos pone retos y que las cosas pueden complicarse, pero quiero que nunca dudes de que, juntos y de la mano, somos capaces de superar cualquier obstáculo. De aquí en adelante quiero estar ahí para ti: acompañar tus pasos, celebrar cada una de tus victorias, sostenerte en los momentos difíciles y demostrarte todos los días lo mucho que te amo. Gracias por demostrarme tanto amor, por tu entrega y por permanecer en mi vida. Espero que tú también quieras permanecer siempre en la mía.</p>
 
-Quiero que sepas que me siento infinitamente agradecida con la vida por tu existencia, por cruzar nuestros caminos y por darme el regalo de compartir mi vida contigo. Siento un orgullo gigante por todo lo que has construido y por cada logro en tu camino; tus triunfos los siento y los celebro como si fueran míos. Admiro profundamente tu liderazgo, esa paciencia tan bonita con la que me escuchas y me cuidas, y sobre todo tu determinación inquebrantable para no rendirte ante nada.
+    <svg class="separador" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 H80 M120 10 H200" stroke="currentColor" stroke-width="0.8"/><g stroke="currentColor" stroke-width="0.8" fill="none"><path d="M100 2 Q103 5 100 8 Q97 11 100 14"/><path d="M102 4 Q108 3 112 6 Q106 7 102 4"/><path d="M98 12 Q92 13 88 10 Q94 9 98 12"/></g></svg>
 
-Sé que la vida a veces nos pone retos y que las cosas pueden complicarse, pero quiero que nunca dudes de que, juntos y de la mano, somos capaces de superar cualquier obstáculo. De aquí en adelante quiero estar ahí para ti: acompañar tus pasos, celebrar cada una de tus victorias, sostenerte en los momentos difíciles y demostrarte todos los días lo mucho que te amo. Gracias por demostrarme tanto amor, por tu entrega y por permanecer en mi vida. Espero que tú también quieras permanecer siempre en la mía.</p>
-    <p style="text-align:right;font-weight:bold;margin-top:30px;">Felices 32, mi amor.<br>Te amo.</p>
+    <p style="text-align:right;font-weight:bold;margin-top:20px;font-size:21px;">Felices 32, mi amor.<br>Te amo ❤️</p>
   </div>
 
   <div class="sorpresa-btn-container">
@@ -142,10 +170,22 @@ Sé que la vida a veces nos pone retos y que las cosas pueden complicarse, pero 
   </div>
 
   <section id="revelacion">
-    <div class="regalo-card">
-      <h2>¡Nos vamos de viaje! ✈️</h2>
-      <p>Mi amor, este es tu regalo especial de cumpleaños. Prepara las maletas porque nos vamos a celebrar juntos.</p>
-      <img src="regalo.jpeg" alt="Regalo Sorpresa">
+    <!-- Carga con Suspenso en Moto -->
+    <div id="loader-sorpresa">
+      <div class="spinner"></div>
+      <h3 id="texto-cargando">Cargando tu regalo de cumpleaños...</h3>
+      <p id="subtexto-cargando">Preparando la ruta 🏍️💨</p>
+    </div>
+
+    <!-- Regalo Revelado -->
+    <div id="regalo-final">
+      <div class="regalo-card">
+        <svg class="separador" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 H80 M120 10 H200" stroke="currentColor" stroke-width="0.8"/><g stroke="currentColor" stroke-width="0.8" fill="none"><path d="M100 2 Q103 5 100 8 Q97 11 100 14"/><path d="M102 4 Q108 3 112 6 Q106 7 102 4"/><path d="M98 12 Q92 13 88 10 Q94 9 98 12"/></g></svg>
+        <h2>¡Nos vamos de viaje en moto! 🏍️💨</h2>
+        <p>Mi amor, este es tu regalo especial de cumpleaños. Ajusta el casco y prepara las maletas porque una nueva aventura sobre ruedas nos espera para celebrar juntos.</p>
+        <img src="regalo.jpeg" alt="Regalo Sorpresa">
+        <svg class="separador" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 H80 M120 10 H200" stroke="currentColor" stroke-width="0.8"/><g stroke="currentColor" stroke-width="0.8" fill="none"><path d="M100 2 Q103 5 100 8 Q97 11 100 14"/><path d="M102 4 Q108 3 112 6 Q106 7 102 4"/><path d="M98 12 Q92 13 88 10 Q94 9 98 12"/></g></svg>
+      </div>
     </div>
   </section>
 </div>
@@ -187,8 +227,37 @@ function iniciar(){
 
 function revelarSorpresa(){
   const rev = document.getElementById('revelacion');
+  const loader = document.getElementById('loader-sorpresa');
+  const regalo = document.getElementById('regalo-final');
+  
   rev.style.display = 'block';
+  loader.style.display = 'block';
+  regalo.style.display = 'none';
+  
   rev.scrollIntoView({behavior: 'smooth'});
+
+  // Secuencia de suspenso personalizada para viaje en moto (6 segundos)
+  setTimeout(() => {
+    document.getElementById('texto-cargando').innerText = "Una nueva aventura nos espera...";
+    document.getElementById('subtexto-cargando').innerText = "Encendiendo motores 🏍️✨";
+  }, 2000);
+
+  setTimeout(() => {
+    document.getElementById('texto-cargando').innerText = "Seleccionando el mejor destino...";
+    document.getElementById('subtexto-cargando').innerText = "Trazando la ruta perfecta 🗺️📍";
+  }, 4000);
+
+  setTimeout(() => {
+    document.getElementById('texto-cargando').innerText = "¡Cascos listos!";
+    document.getElementById('subtexto-cargando').innerText = "Revelando tu regalo... 🎁";
+  }, 5500);
+
+  // Revelación final a los 6.5 segundos
+  setTimeout(() => {
+    loader.style.display = 'none';
+    regalo.style.display = 'block';
+    regalo.scrollIntoView({behavior: 'smooth'});
+  }, 6500);
 }
 </script>
 </body>

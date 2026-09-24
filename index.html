@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Cumpleaños Mi Amor</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#fdf8f0;color:#5a4430;font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+
+/* PORTADA */
+#portada{position:relative;min-height:100vh;min-height:100svh;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;overflow:hidden;background:#2d241d;padding:20px 20px 35px}
+
+/* Fondo difuminado de relleno */
+#portada::after{content:'';position:absolute;inset:0;background-image:url('foto7.jpeg');background-size:cover;background-position:center;filter:blur(25px) brightness(0.5);opacity:0.9}
+
+/* 
+  FOTO PRINCIPAL: 
+  - Anclada abajo (bottom)
+  - Zoom de 1.4 (scale) para empujar a la niña hacia arriba y fuera del marco 
+*/
+#portada::before{content:'';position:absolute;inset:0;z-index:1;background-image:url('foto7.jpeg');background-size:contain;background-position:center bottom;background-repeat:no-repeat;transform:scale(1.2);transform-origin:center bottom}
+
+/* 
+  TARJETA FLOTANTE MUY TRANSPARENTE 
+  - rgba al 0.25 para que sea casi cristalina
+  - backdrop-filter para difuminar levemente lo que hay detrás y que el texto se lea
+*/
+#portada .contenido{position:relative;z-index:2;max-width:420px;width:90%;margin-top:auto;display:flex;flex-direction:column;align-items:center;background:rgba(255, 255, 255, 0.25);padding:25px 20px;border-radius:22px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 10px 40px rgba(0,0,0,0.15);border:1px solid rgba(255, 255, 255, 0.4)}
+#portada .adorno{width:130px;margin-bottom:8px;opacity:0.9;color:#4a3525}
+#portada h1{font-family:'EB Garamond',serif;font-size:clamp(30px, 5.5vw, 42px);font-weight:600;color:#2c1e14;line-height:1.15;letter-spacing:0.5px;text-shadow:0 0 15px rgba(255,255,255,0.8)}
+#portada h1 span{display:block;margin-top:4px;font-weight:400}
+#portada .btn{margin-top: 20px;background: rgba(255, 255, 255, 0.95);border: 1px solid rgba(0, 0, 0, 0.15);color: #1a1008;padding: 14px 32px;border-radius: 40px;font-size: 19px;font-family: 'Cormorant Garamond', serif;font-weight: 700;cursor: pointer;box-shadow: 0 4px 18px rgba(0,0,0,0.2);transition: all 0.2s ease;}
+#portada .btn:active{transform:scale(0.96)}
+
+/* CONTENIDO */
+#contenido{display:none;background:#fdf8f0}
+#galeria{padding:40px 0 20px}
+#galeria h2{text-align:center;font-family:'EB Garamond',serif;font-size:clamp(30px, 6vw, 42px);color:#4a3525;font-weight:400;margin-bottom:5px}
+#galeria .sub{text-align:center;font-size:13px;letter-spacing:2px;opacity:0.6;margin-bottom:20px}
+
+/* SLIDER Y FOTOS COMPLETAS */
+.slider{width:100%;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+.slider::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;padding:0 20px;display:flex;justify-content:center}
+.card{background:#fff;border-radius:24px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,0.05);max-width:450px;width:100%;border:1px solid #f3e9d9;display:flex;flex-direction:column;align-items:center}
+
+.card img{width:100%;height:55vh;max-height:500px;min-height:300px;object-fit:contain;background:#faf6f0;border-radius:16px;display:block}
+
+.card .texto{text-align:center;padding:18px 10px 10px;width:100%}
+.card .texto h3{font-family:'EB Garamond',serif;font-size:26px;color:#5e4228;font-weight:600;margin-bottom:6px}
+.card .texto p{font-size:18px;line-height:1.4;color: #1a1008;opacity:0.85}
+
+/* CONTROLES Y PUNTOS */
+.dots{display:flex;justify-content:center;gap:8px;margin:20px 0 15px;flex-wrap:wrap;padding:0 20px}
+.dots span{width:8px;height:8px;border-radius:50%;background:#e0d4c3;transition:0.3s}
+.dots span.active{background:#8a6d52;width:24px;border-radius:10px}
+.flechas{display:flex;justify-content:center;gap:20px;margin-bottom:30px}
+.flechas button{background:#fff;border:1px solid #e8ddd0;width:45px;height:45px;border-radius:50%;cursor:pointer;font-size:22px;color:#8a6d52;box-shadow:0 4px 10px rgba(0,0,0,0.05);transition:0.2s}
+.flechas button:active{transform:scale(0.9)}
+
+/* CARTA RESPONSIVA */
+.carta{background:#fff;max-width:650px;width:calc(100% - 40px);margin:20px auto 50px;padding:45px 35px;border-radius:24px;box-shadow:0 12px 40px rgba(0,0,0,0.04);border:1px solid #f0e6d9;line-height:1.8}
+.carta h1{font-family:'EB Garamond',serif;font-size:40px;color:#4a3525;font-weight:400;margin-bottom:20px}
+.carta p{font-size:19px;margin-bottom:16px;color: #1a1008}
+
+/* SORPRESA FINAL */
+.sorpresa-btn-container{text-align:center;margin:20px 0 70px}
+.btn-sorpresa{background:#7a5a40;color:#fff;border:none;padding:16px 36px;border-radius:40px;font-size:20px;font-family:'Cormorant Garamond',serif;font-weight:600;cursor:pointer;box-shadow:0 8px 25px rgba(122,90,64,0.3);transition:0.3s}
+.btn-sorpresa:active{transform:scale(0.97)}
+
+#revelacion{display:none;padding:50px 20px;background:#f7efe5;border-top:1px solid #e8ddd0;text-align:center}
+#revelacion .regalo-card{max-width:550px;margin:0 auto;background:#fff;padding:30px;border-radius:24px;box-shadow:0 12px 35px rgba(0,0,0,0.06)}
+#revelacion h2{font-family:'EB Garamond',serif;font-size:38px;color:#4a3525;margin-bottom:15px}
+#revelacion p{font-size:19px;margin-bottom:25px;line-height:1.6}
+#revelacion img{width:100%;max-height:450px;object-fit:contain;border-radius:16px;background:#faf6f0}
+
+audio{display:none}
+
+@media(min-width:768px){
+  .card img{height:60vh}
+  .carta{padding:55px 50px}
+}
+</style>
+</head>
+<body>
+
+<audio id="audio" loop preload="auto">
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<section id="portada">
+  <div class="contenido">
+    <div class="adorno">
+      <svg viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 H80 M120 10 H200" stroke="#4a3525" stroke-width="0.8"/><g stroke="#4a3525" stroke-width="0.8" fill="none"><path d="M100 2 Q103 5 100 8 Q97 11 100 14"/><path d="M102 4 Q108 3 112 6 Q106 7 102 4"/><path d="M98 12 Q92 13 88 10 Q94 9 98 12"/></g></svg>
+    </div>
+    <h1>Feliz Cumpleaños <span>Mi Amor</span></h1>
+    <button class="btn" onclick="iniciar()">Comenzar el recorrido 💕</button>
+  </div>
+</section>
+
+<div id="contenido">
+  <section id="galeria">
+    <h2>Has sido luz en nuestras vidas</h2>
+    <p class="sub">...</p>
+    <div class="slider" id="slider">
+      <div class="slide"><div class="card"><img src="foto1.jpeg"><div class="texto"><h3>El inicio de todo</h3><p>Así empezó la historia del gran hombre que eres.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto2.jpeg"><div class="texto"><h3>El niño más tierno</h3><p>Porque las fotos más reales son las que más nos hacen sonreír.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto3.jpeg"><div class="texto"><h3>Rodeado de amor</h3><p>Creciste en libertad, rodeado de montañas, animales pero sobre todo de amor.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto4.jpeg"><div class="texto"><h3>Tus raíces</h3><p>Los valores que te hacen ser quien eres.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto5.jpeg"><div class="texto"><h3>Protección</h3><p>Bajos los hombros de quienes siempre te cuidaron.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto6.jpeg"><div class="texto"><h3>Con todo el estilo</h3><p>Guapo, tierno y con una mirada que lo dice todo.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto7.jpeg"><div class="texto"><h3>Ese carisma</h3><p>Con la misma mirada fija y decidida que te sigue caracterizando.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto8.jpeg"><div class="texto"><h3>El novio más guapo</h3>Mírate nada más... ¡Quién hubiera podido conocerte desde esos años!<p></p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto9.jpeg"><div class="texto"><h3>El comienzo de tus metas</h3><p>Con la sonrisa intacta y lleno de ilusiones.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto10.jpeg"><div class="texto"><h3>El reflejo de su amor</h3><p>Parte de todo lo bonito que hay en ti es gracias al amor con el que te formó.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto11.jpeg"><div class="texto"><h3>Orgullosa de tu proceso</h3><p>Admiro profundamente todo lo que has logrado.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto12.jpeg"><div class="texto"><h3>El cariño de los tuyos</h3>Rodeado siempre del cariño, el apoyo y la alegría de quienes te aman.<p></p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto13.jpeg"><div class="texto"><h3>Un amor infinito</h3><p>Tu rol de papá te queda hermoso; eres su guía, su héroe y su mayor luz.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto14.jpeg"><div class="texto"><h3>Mi orgullo</h3><p>Tus logros son los míos.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto15.jpeg"><div class="texto"><h3>El amor</h3><p>Nuestra historia.</p></div></div></div>
+      <div class="slide"><div class="card"><img src="foto16.jpeg"><div class="texto"><h3>Mi amor eterno</h3><p>Gracias por existir en mi vida.</p></div></div></div>
+    </div>
+    <div class="dots" id="dots"></div>
+    <div class="flechas"><button onclick="mover(-1)">‹</button><button onclick="mover(1)">›</button></div>
+  </section>
+
+  <div class="carta">
+    <h1>Mi Amor,</h1>
+    <p>Hoy, 30 de septiembre de 2026, celebramos tus 32 años de vida, y no imaginas la inmensa felicidad y gratitud que siente mi corazón al estar a tu lado en un día tan especial.</p>
+    <p>En cada una de las fotos que acabas de ver quise plasmar un poquito de tu historia: desde tus primeros pasos siendo ese bebito curioso y alegre, pasando por tus aventuras, tu juventud y tu crecimiento, hasta llegar al hombre maravilloso que eres hoy, 32 años después.
+
+Quiero que sepas que me siento infinitamente agradecida con la vida por tu existencia, por cruzar nuestros caminos y por darme el regalo de compartir mi vida contigo. Siento un orgullo gigante por todo lo que has construido y por cada logro en tu camino; tus triunfos los siento y los celebro como si fueran míos. Admiro profundamente tu liderazgo, esa paciencia tan bonita con la que me escuchas y me cuidas, y sobre todo tu determinación inquebrantable para no rendirte ante nada.
+
+Sé que la vida a veces nos pone retos y que las cosas pueden complicarse, pero quiero que nunca dudes de que, juntos y de la mano, somos capaces de superar cualquier obstáculo. De aquí en adelante quiero estar ahí para ti: acompañar tus pasos, celebrar cada una de tus victorias, sostenerte en los momentos difíciles y demostrarte todos los días lo mucho que te amo. Gracias por demostrarme tanto amor, por tu entrega y por permanecer en mi vida. Espero que tú también quieras permanecer siempre en la mía.</p>
+    <p style="text-align:right;font-weight:bold;margin-top:30px;">Felices 32, mi amor.<br>Te amo.</p>
+  </div>
+
+  <div class="sorpresa-btn-container">
+    <button class="btn-sorpresa" onclick="revelarSorpresa()">Tengo una sorpresa final... 🎁</button>
+  </div>
+
+  <section id="revelacion">
+    <div class="regalo-card">
+      <h2>¡Nos vamos de viaje! ✈️</h2>
+      <p>Mi amor, este es tu regalo especial de cumpleaños. Prepara las maletas porque nos vamos a celebrar juntos.</p>
+      <img src="regalo.jpeg" alt="Regalo Sorpresa">
+    </div>
+  </section>
+</div>
+
+<script>
+const slider = document.getElementById('slider');
+const dotsBox = document.getElementById('dots');
+const totalSlides = document.querySelectorAll('.slide').length;
+
+for(let i = 0; i < totalSlides; i++){
+  let d = document.createElement('span');
+  if(i === 0) d.classList.add('active');
+  dotsBox.appendChild(d);
+}
+const dots = dotsBox.querySelectorAll('span');
+
+function actualizarDots(){
+  let idx = Math.round(slider.scrollLeft / slider.clientWidth);
+  dots.forEach(d => d.classList.remove('active'));
+  if(dots[idx]) dots[idx].classList.add('active');
+}
+slider.addEventListener('scroll', actualizarDots);
+
+function mover(dir){
+  let w = slider.clientWidth;
+  slider.scrollBy({left: w * dir, behavior: 'smooth'});
+}
+
+function iniciar(){
+  document.getElementById('portada').style.display = 'none';
+  document.getElementById('contenido').style.display = 'block';
+  
+  const a = document.getElementById('audio');
+  a.volume = 0.9;
+  a.play().catch(e => console.log("Audio:", e));
+  
+  window.scrollTo(0, 0);
+}
+
+function revelarSorpresa(){
+  const rev = document.getElementById('revelacion');
+  rev.style.display = 'block';
+  rev.scrollIntoView({behavior: 'smooth'});
+}
+</script>
+</body>
+</html>

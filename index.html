@@ -9,40 +9,20 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#fdf8f0;color:#5a4430;font-family:'Cormorant Garamond',serif;overflow-x:hidden;position:relative}
 
-/* DECORACIÓN VINTAGE/ELEGANTE DE FONDO (SIN EMOJIS) */
-.fondo-decorativo{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;opacity:0.4}
-
-/* Globos vectoriales sutiles en las esquinas/fondo */
-.globo-svg{position:absolute;width:120px;height:160px;animation:flotarGently 9s ease-in-out infinite alternate}
-.globo-1{top:8%;left:2%;animation-delay:0s}
-.globo-2{top:40%;right:3%;animation-delay:3s;transform:scale(0.85)}
-.globo-3{top:72%;left:3%;animation-delay:1.5s;transform:scale(0.9)}
-
-/* Serpentinas sutiles dibujadas en SVG */
-.serpentina-svg{position:absolute;width:80px;height:180px;opacity:0.6;animation:balanceo 7s ease-in-out infinite alternate}
-.serp-1{top:20%;right:2%;animation-delay:1s}
-.serp-2{top:60%;left:2%;animation-delay:4s}
-
-@keyframes flotarGently{
-  0%{transform:translateY(0) rotate(-3deg)}
-  100%{transform:translateY(-25px) rotate(4deg)}
-}
-
-@keyframes balanceo{
-  0%{transform:translateY(0) rotate(0deg)}
-  100%{transform:translateY(-15px) rotate(-6deg)}
-}
-
 /* PORTADA */
 #portada{position:relative;min-height:100vh;min-height:100svh;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;overflow:hidden;background:#2d241d;padding:20px 20px 35px}
 #portada::after{content:'';position:absolute;inset:0;background-image:url('foto7.jpeg');background-size:cover;background-position:center;filter:blur(25px) brightness(0.5);opacity:0.9}
 #portada::before{content:'';position:absolute;inset:0;z-index:1;background-image:url('foto7.jpeg');background-size:contain;background-position:center bottom;background-repeat:no-repeat;transform:scale(1.2);transform-origin:center bottom}
 
-#portada .contenido{position:relative;z-index:2;max-width:420px;width:90%;margin-top:auto;display:flex;flex-direction:column;align-items:center;background:rgba(255, 255, 255, 0.25);padding:25px 20px;border-radius:22px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 10px 40px rgba(0,0,0,0.15);border:1px solid rgba(255, 255, 255, 0.4)}
-#portada .adorno{width:140px;margin-bottom:8px;opacity:0.9;color:#4a3525}
-#portada h1{font-family:'EB Garamond',serif;font-size:clamp(30px, 5.5vw, 42px);font-weight:600;color:#2c1e14;line-height:1.15;letter-spacing:0.5px;text-shadow:0 0 15px rgba(255,255,255,0.8)}
-#portada h1 span{display:block;margin-top:4px;font-weight:400}
-#portada .btn{margin-top: 20px;background: rgba(255, 255, 255, 0.95);border: 1px solid rgba(0, 0, 0, 0.15);color: #1a1008;padding: 14px 32px;border-radius: 40px;font-size: 19px;font-family: 'Cormorant Garamond', serif;font-weight: 700;cursor: pointer;box-shadow: 0 4px 18px rgba(0,0,0,0.2);transition: all 0.2s ease;}
+#portada .contenido{position:relative;z-index:2;max-width:420px;width:90%;margin-top:auto;display:flex;flex-direction:column;align-items:center;background:rgba(255, 255, 255, 0.35);padding:25px 20px;border-radius:22px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 10px 40px rgba(0,0,0,0.2);border:1px solid rgba(255, 255, 255, 0.5)}
+#portada .adorno{width:140px;margin-bottom:8px;opacity:0.95;color:#1c1108}
+
+/* Título de portada más oscuro */
+#portada h1{font-family:'EB Garamond',serif;font-size:clamp(30px, 5.5vw, 42px);font-weight:600;color:#150d06;line-height:1.15;letter-spacing:0.5px;text-shadow:0 0 10px rgba(255,255,255,0.9)}
+#portada h1 span{display:block;margin-top:4px;font-weight:400;color:#150d06}
+
+/* Botón comenzar blanco y brillante */
+#portada .btn{margin-top: 20px;background: #ffffff;border: 1px solid rgba(0, 0, 0, 0.1);color: #1a1008;padding: 14px 32px;border-radius: 40px;font-size: 19px;font-family: 'Cormorant Garamond', serif;font-weight: 700;cursor: pointer;box-shadow: 0 6px 20px rgba(0,0,0,0.25);transition: all 0.2s ease;}
 #portada .btn:active{transform:scale(0.96)}
 
 /* CONTENIDO */
@@ -97,7 +77,12 @@ body{background:#fdf8f0;color:#5a4430;font-family:'Cormorant Garamond',serif;ove
 #revelacion .regalo-card{max-width:550px;margin:0 auto;background:#fff;padding:30px;border-radius:24px;box-shadow:0 12px 35px rgba(0,0,0,0.06);border:1px solid #f0e6d9}
 #revelacion h2{font-family:'EB Garamond',serif;font-size:38px;color:#4a3525;margin-bottom:15px}
 #revelacion p{font-size:19px;margin-bottom:25px;line-height:1.6;color:#1a1008}
+#revelacion .fotos-regalo{display:flex;flex-direction:column;gap:15px;margin-bottom:20px}
 #revelacion img{width:100%;max-height:450px;object-fit:contain;border-radius:16px;background:#faf6f0}
+
+/* Estilos de Agradecimiento y Créditos */
+.agradecimiento{margin-top:25px;font-size:18px;color:#4a3525;font-style:italic;line-height:1.5}
+.creditos{font-size: 9px;color: #a89484;opacity: 0.5;letter-spacing: 1px;margin-top: 30px;text-align: center;}
 
 audio{display:none}
 
@@ -108,43 +93,6 @@ audio{display:none}
 </style>
 </head>
 <body>
-
-<!-- DECORACIONES DE FONDO CUMPLEAÑERAS CON SVG (ELEGANTES Y SIN EMOJIS) -->
-<div class="fondo-decorativo">
-  <!-- Globo SVG 1 -->
-  <svg class="globo-svg globo-1" viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M50 10 C20 10 10 35 10 60 C10 90 42 110 50 112 C58 110 90 90 90 60 C90 35 80 10 50 10 Z" fill="#d9c3b0" opacity="0.6"/>
-    <path d="M47 112 L53 112 L51 117 L49 117 Z" fill="#a88c74"/>
-    <path d="M50 117 Q45 130 52 140" stroke="#a88c74" stroke-width="1.5" fill="none"/>
-    <ellipse cx="35" cy="35" rx="8" ry="16" fill="#ffffff" opacity="0.4" transform="rotate(-20 35 35)"/>
-  </svg>
-
-  <!-- Globo SVG 2 -->
-  <svg class="globo-svg globo-2" viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M50 10 C20 10 10 35 10 60 C10 90 42 110 50 112 C58 110 90 90 90 60 C90 35 80 10 50 10 Z" fill="#c2a68c" opacity="0.5"/>
-    <path d="M47 112 L53 112 L51 117 L49 117 Z" fill="#8c6d53"/>
-    <path d="M50 117 Q55 128 48 140" stroke="#8c6d53" stroke-width="1.5" fill="none"/>
-    <ellipse cx="35" cy="35" rx="8" ry="16" fill="#ffffff" opacity="0.4" transform="rotate(-20 35 35)"/>
-  </svg>
-
-  <!-- Globo SVG 3 -->
-  <svg class="globo-svg globo-3" viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M50 10 C20 10 10 35 10 60 C10 90 42 110 50 112 C58 110 90 90 90 60 C90 35 80 10 50 10 Z" fill="#e6d5c3" opacity="0.7"/>
-    <path d="M47 112 L53 112 L51 117 L49 117 Z" fill="#a88c74"/>
-    <path d="M50 117 Q43 126 50 140" stroke="#a88c74" stroke-width="1.5" fill="none"/>
-    <ellipse cx="35" cy="35" rx="8" ry="16" fill="#ffffff" opacity="0.5" transform="rotate(-20 35 35)"/>
-  </svg>
-
-  <!-- Serpentina SVG 1 -->
-  <svg class="serpentina-svg serp-1" viewBox="0 0 50 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M25 0 Q40 25 25 50 Q10 75 25 100 Q40 125 25 150" stroke="#b89b82" stroke-width="2" fill="none"/>
-  </svg>
-
-  <!-- Serpentina SVG 2 -->
-  <svg class="serpentina-svg serp-2" viewBox="0 0 50 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M25 0 Q10 25 25 50 Q40 75 25 100 Q10 125 25 150" stroke="#cfb299" stroke-width="2" fill="none"/>
-  </svg>
-</div>
 
 <audio id="audio" loop preload="auto">
   <source src="musica.mp3" type="audio/mpeg">
@@ -162,7 +110,7 @@ audio{display:none}
 
 <div id="contenido">
   <section id="galeria">
-    <h2>Has sido luz en nuestras vidas</h2>
+    <h2>HAS SIDO LUZ EN NUESTRAS VIDAS</h2>
     <p class="sub">UN RECORRIDO POR TU HISTORIA</p>
     <div class="slider" id="slider">
       <div class="slide"><div class="card"><img src="foto1.jpeg"><div class="texto"><h3>El inicio de todo</h3><p>Así empezó la historia del gran hombre que eres.</p></div></div></div>
@@ -193,35 +141,43 @@ audio{display:none}
     <h1>Mi Amor,</h1>
     
     <p>Hoy, 30 de septiembre de 2026, celebramos tus 32 años de vida, y no imaginas la inmensa felicidad y gratitud que siente mi corazón al estar a tu lado en un día tan especial.</p>
-    <p>En cada una de las fotos que acabas de ver quise plasmar un poquito de tu historia: desde tus primeros pasos siendo ese bebito curioso y alegre, pasando por tus aventuras, tu juventud y tu crecimiento, hasta llegar al hombre maravilloso que eres hoy, 32 años después.</p>
-    <p>Quiero que sepas que me siento infinitamente agradecida con la vida por tu existencia, por cruzar nuestros caminos y por darme el regalo de compartir mi vida contigo. Siento un orgullo gigante por todo lo que has construido y por cada logro en tu camino; tus triunfos los siento y los celebro como si fueran míos. Admiro profundamente tu liderazgo, esa paciencia tan bonita con la que me escuchas y me cuidas, y sobre todo tu determinación inquebrantable para no rendirte ante nada.</p>
-    <p>Sé que la vida a veces nos pone retos y que las cosas pueden complicarse, pero quiero que nunca dudes de que, juntos y de la mano, somos capaces de superar cualquier obstáculo. De aquí en adelante quiero estar ahí para ti: acompañar tus pasos, celebrar cada una de tus victorias, sostenerte en los momentos difíciles y demostrarte todos los días lo mucho que te amo. Gracias por demostrarme tanto amor, por tu entrega y por permanecer en mi vida. Espero que tú también quieras permanecer siempre en la mía.</p>
+    <p>Sé que tu vida ha estado llena de altibajos, momentos buenos y otros no tan buenos, pero gracias a lo que eres, a lo que forjaron en ti y a todas y cada una de esas situaciones, eres un hombre más fuerte y con más determinación. Hoy celebramos un año más de vida llenando de luz a todos los que te rodean. Te amo y te admiro por lo que eres.</p>
+    <p>Quiero que sepas que me siento infinitamente agradecida con la vida por tu existencia, por cruzar nuestros caminos y por darme el regalo de compartir mi vida contigo. Siento un orgullo gigante por quién eres y por lo que has logrado. Quiero que nunca desconfíes de ti ni de lo que eres; eres un ser maravilloso y nadie nunca estará por encima de ti. Tus triunfos los siento y los celebro como si fueran míos, pero sobre todo, tus derrotas las afronto junto a ti. Admiro profundamente tu liderazgo, tu respeto, tu paciencia y, sobre todo, tu determinación inquebrantable para no rendirte ante nada.</p>
+    <p>Sé que la vida a veces nos pone retos y que las cosas pueden complicarse, pero quiero que nunca dudes de que, juntos y de la mano, somos capaces de superar cualquier obstáculo. Quiero estar siempre para ti, celebrar cada una de tus victorias, sostenerte en los momentos difíciles y demostrarte todos los días lo mucho que te amo.</p>
+    <p>Gracias por demostrarme tanto amor, por tu entrega y por permanecer en mi vida.</p>
 
     <svg class="separador" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 H80 M120 10 H200" stroke="currentColor" stroke-width="0.8"/><g stroke="currentColor" stroke-width="0.8" fill="none"><path d="M100 2 Q103 5 100 8 Q97 11 100 14"/><path d="M102 4 Q108 3 112 6 Q106 7 102 4"/><path d="M98 12 Q92 13 88 10 Q94 9 98 12"/></g></svg>
 
-    <p style="text-align:right;font-weight:bold;margin-top:20px;font-size:21px;">Felices 32, mi amor.<br>Te amo ❤️</p>
+    <p style="text-align:right;font-weight:bold;margin-top:20px;font-size:21px;">Felices 32, mi amor.<br>Te amo 🧡</p>
   </div>
 
   <div class="sorpresa-btn-container">
-    <button class="btn-sorpresa" onclick="revelarSorpresa()">Tengo una sorpresa final... 🎁</button>
+    <button class="btn-sorpresa" onclick="revelarSorpresa()">Aquí hay un último detalle</button>
   </div>
 
   <section id="revelacion">
-    <!-- Carga con Suspenso en Moto -->
+    <!-- Carga con Mensajes cada 4 Segundos -->
     <div id="loader-sorpresa">
       <div class="spinner"></div>
       <h3 id="texto-cargando">Cargando tu regalo de cumpleaños...</h3>
-      <p id="subtexto-cargando">Preparando la ruta 🏍️💨</p>
+      <p id="subtexto-cargando">Preparando todo con mucho amor...</p>
     </div>
 
     <!-- Regalo Revelado -->
     <div id="regalo-final">
       <div class="regalo-card">
         <svg class="separador" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 H80 M120 10 H200" stroke="currentColor" stroke-width="0.8"/><g stroke="currentColor" stroke-width="0.8" fill="none"><path d="M100 2 Q103 5 100 8 Q97 11 100 14"/><path d="M102 4 Q108 3 112 6 Q106 7 102 4"/><path d="M98 12 Q92 13 88 10 Q94 9 98 12"/></g></svg>
-        <h2>¡Nos vamos de viaje en moto! 🏍️💨</h2>
-        <p>Mi amor, este es tu regalo especial de cumpleaños. Ajusta el casco y prepara las maletas porque una nueva aventura sobre ruedas nos espera para celebrar juntos.</p>
-        <img src="regalo.jpeg" alt="Regalo Sorpresa">
+        <h2>¡Una nueva aventura nos espera!</h2>
+        <p>Mi amor, este es tu regalo especial de cumpleaños.</p>
+        <div class="fotos-regalo">
+          <img src="foto17.jpg" alt="Foto adicional regalo">
+        </div>
+
+        <p class="agradecimiento">Gracias por hacer de mi vida un lugar más bonito. ¡Que sigamos creando juntos miles de recuerdos más!</p>
+
         <svg class="separador" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 H80 M120 10 H200" stroke="currentColor" stroke-width="0.8"/><g stroke="currentColor" stroke-width="0.8" fill="none"><path d="M100 2 Q103 5 100 8 Q97 11 100 14"/><path d="M102 4 Q108 3 112 6 Q106 7 102 4"/><path d="M98 12 Q92 13 88 10 Q94 9 98 12"/></g></svg>
+
+        <p class="creditos">© [2026] [Karen Zapata]</p>
       </div>
     </div>
   </section>
@@ -262,38 +218,51 @@ function iniciar(){
   window.scrollTo(0, 0);
 }
 
+let sorpresaTimers = [];
+
 function revelarSorpresa(){
+  // Limpiar temporizadores anteriores si se vuelve a presionar el botón
+  sorpresaTimers.forEach(timer => clearTimeout(timer));
+  sorpresaTimers = [];
+
   const rev = document.getElementById('revelacion');
   const loader = document.getElementById('loader-sorpresa');
   const regalo = document.getElementById('regalo-final');
   
+  // Estado inicial (0 a 4 segundos)
+  document.getElementById('texto-cargando').innerText = "Cargando tu regalo de cumpleaños...";
+  document.getElementById('subtexto-cargando').innerText = "Preparando todo con mucho amor...";
+
   rev.style.display = 'block';
   loader.style.display = 'block';
   regalo.style.display = 'none';
   
   rev.scrollIntoView({behavior: 'smooth'});
 
-  // Secuencia de suspenso en moto (6.5 segundos)
-  setTimeout(() => {
-    document.getElementById('texto-cargando').innerText = "Una nueva aventura nos espera...";
-    document.getElementById('subtexto-cargando').innerText = "Encendiendo motores 🏍️✨";
-  }, 2000);
+  // Mensaje 2: a los 4 segundos
+  sorpresaTimers.push(setTimeout(() => {
+    document.getElementById('texto-cargando').innerText = "Diseñando un momento inolvidable...";
+    document.getElementById('subtexto-cargando').innerText = "Ajustando los últimos detalles...";
+  }, 4000));
 
-  setTimeout(() => {
-    document.getElementById('texto-cargando').innerText = "Seleccionando el mejor destino...";
-    document.getElementById('subtexto-cargando').innerText = "Trazando la ruta perfecta 🗺️📍";
-  }, 4000);
+  // Mensaje 3: a los 8 segundos
+  sorpresaTimers.push(setTimeout(() => {
+    document.getElementById('texto-cargando').innerText = "Pensado especialmente para ti...";
+    document.getElementById('subtexto-cargando').innerText = "Un segundo más...";
+  }, 8000));
 
-  setTimeout(() => {
-    document.getElementById('texto-cargando').innerText = "¡Cascos listos!";
-    document.getElementById('subtexto-cargando').innerText = "Revelando tu regalo... 🎁";
-  }, 5500);
+  // Mensaje 4: a los 12 segundos
+  sorpresaTimers.push(setTimeout(() => {
+    document.getElementById('texto-cargando').innerText = "¡Todo listo!";
+    document.getElementById('subtexto-cargando').innerText = "";
+  }, 12000));
 
-  setTimeout(() => {
+  // Revelación final del regalo: a los 16 segundos
+  sorpresaTimers.push(setTimeout(() => {
     loader.style.display = 'none';
     regalo.style.display = 'block';
     regalo.scrollIntoView({behavior: 'smooth'});
-  }, 6500);
+  }, 16000));
 }
 </script>
 </body>
